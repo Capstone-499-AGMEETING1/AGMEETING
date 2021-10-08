@@ -24,3 +24,10 @@ report/presentation.
 - When an AnyTime button request is made the moderator recieves a popup window which remaind until the issue is resolved.
 - To start an agenda itme the moderator presses the `Presentation in Progress` button and the In Session and Agenda fields update to reflect the change.
 - At the end of the meeting, the meeting structure can be reset for use in another meeting or cleared.
+
+### Chester
+- Pre-prepared templates are available for meeting items as an alternative to saving it as a template.
+- The "ADD NOTES TO LOG" function allows any moderator or adminstrator to add notes for summary in the "In Session Log"
+- All voting options will be "For, Against or Abstain" but further options can be customized in the "Select Voting Mode" screen.
+- When the "SAVE MEETING LOG" fuction is used, the PDF is automatically downloaded to the user's computer.
+- The light version of the AGMeeting App can only be setup by the Super Administrator.

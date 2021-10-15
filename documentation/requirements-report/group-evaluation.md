@@ -14,9 +14,18 @@ All members of the team contributed to each of the group evaluations.
 
 ### CHECKLICK
 
+- Good use of integrating a demonstration of the Checklick application within the video. How do you plan to fulfill your goals of improving the UI? How do you plan on gathering feedback data as well?
+- The audio for the presentation needs balancing as certain members are too loud or quiet. It's mentioned that your other goals are to make it easier to maintain as well as improve performance. How do you plan on doing so? What do you plan on doing to improve upon these aspects?
+
 ### CHECKLICK (1)
 
+- The description and user groups were presented clearly and was informative. It did run long and could be shortened in some areas such as with the functional and non-functional requirements. It is mentioned in the DFD Milestones that peer testing will occur. Who exactly is the target audience for the peer testing? How many people will participate? How will you compile and use this feedback data?
+- Your goal is mentioned to be in improving the process and making the application more intuitive for the user. How do you plan on doing so? What are some of the features that you will be adding or modifying that are part of your scope? Do you have more concrete details on what will be part of the "revamp" apart from what is mentioned?
+
 ### CHECKLICK (2)
+
+- The video was quite informative and everything was presented in a clear manner. The DFD however, was missing from the presentation. How does information flow through the system? How is it stored or processed along the way? What does the level 0 and level 1 DFD look like?
+- There are extensive plans on the redesigning and restyling of the application website. Are there any plans on incorporating client or user feedback on the features of the project during the development phase?
 
 ### Cyclops
 

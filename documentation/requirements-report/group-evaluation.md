@@ -4,9 +4,18 @@ All members of the team contributed to each of the group evaluations.
 
 ### Laboratory Information Management System
 
+- Slides are neatly organized, not cluttered and I like that no one is reading directly from the slides making the presentation more professional. Everyone presented concise and clear and all the members that presented spoke clearly, were easy to understand and follow; however, the level 1 data flow diagram was a little difficult to read. Also, who are your target user groups for the project? 
+- The functional and non-funtional requirements of the project are not clear. How do they differ? At what particular milestones will they be implemented?
+
 ### Laboratory Information Management System (1)
 
+- Content is not directly read from the slides, which makes it easier to connect to the audience and makes the presentation more professional; however the presentation was black text on a white background, so I suggest implementing a theme for a more visually appealing presentation. Everyone presented at a good pace, although some presenters were more difficult to hear than others. Maybe some volume could be adjusted? The functional requirements could be more detailed. 
+- Addionally, a few questions that came up during the presentation: Where is your other data flow diagram and does it accurately represent the flow of data? What are your non-functional requirements? What is your testing strategy?
+
 ### Laboratory Information Management System (2)
+
+- This presentation was very well done. The content seems thoroughly researched (as much as it can be at this point in the project), and the presentation was neatly organized with a consistent theme and good audience engagement. Images were used adequately for a visually appealing presenation. All parts were included, and their descriptions and explanations were very detailed, although the presentation seems to be missing another data flow diagram. 
+- Some slides were mildly cluttered, maybe a little bit too much text, but this was no major concern. Andrew was a little harder to follow, and it almost seems like his part was rushed. Additionally, some questions that came up during the presentation: How does taking an agile approach lead to fragmented output? What do you mean by this? Will other forms of testing be implemented as well?
 
 ### AGMEETING
 

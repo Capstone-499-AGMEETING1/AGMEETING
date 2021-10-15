@@ -72,9 +72,18 @@ All members of the team contributed to each of the group evaluations.
 
 ### Medical Image De-Identification
 
+-There seems to be a bit confusion with the level 0 and level 1 DFDs. The server and DICOM files are located differently within the process. How does the application and its processes individually interact with external entities such as the database and file system? How does the data flow through the Orthanc server?
+-The milestones for the project are fleshed out and well thought. It is mentioned that your aim is to complete all functional requirements. The only one right now is the de-identification and anonymizing aspect of the application. Are there more details on these requirements? How does the app have to behave and what functions should be implemented in order to meet this criteria?
+
 ### Medical Image De-Identification (1)
 
+-The current process and problem is well explained within the video presentation. Regarding your tech stack, you have detailed the pros and cons of the two programming languages. What build tools or libraries will you be utilizing to progress with your development?
+- You have outlined the testing methods you will be using for the project, although it is not clear how exactly you will be performing these tests and how the code will be maintained in the future. What kind of testing environment will you be using for these tests? How will you assure that there is quality assurance? Will the application be easy to maintain and how so?
+
 ### Medical Image De-Identification (2)
+
+- The presentation is well presented and easy to read, although it is unclear what your requirements are. What are your functional requirements as well as the non-functional requirements for your project?
+- Testing strategies are also mentioned with your project presentation. Although it is present and thought out, what are your plans and goals for meeting quality assurance? What do you need to achieve in order to meet quality assurance requirements?
 
 ### woo woo network
 

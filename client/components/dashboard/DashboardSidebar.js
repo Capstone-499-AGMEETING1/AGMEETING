@@ -158,6 +158,31 @@ const DashboardSidebar = (props) => {
                             <Button onClick={handleClose}>Close</Button>
                         </Box>
                     </Modal>
+                    <Button onClick={handleOpen} startIcon={<HowToReg />}>Votes</Button>
+                    <Modal
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby="modal-title2"
+                        aria-describedby="modal-description2"
+                    >
+                        <Box sx={style}>
+                            <Typography id="modal-title2" variant="h6" component="h2">
+                                Vote Count
+                            </Typography>
+                            <Typography id="modal-description2" sx={{ mt: 2 }}>
+                                <Typography>
+                                    VOTED YES: 44
+                                </Typography>
+                                <Typography>
+                                    VOTED NO: 55
+                                </Typography>
+                                <Typography>
+                                    ABSTAIN: 3
+                                </Typography>
+                            </Typography>
+                            <Button onClick={handleClose}>Close</Button>
+                        </Box>
+                    </Modal>
 
                 </Box>
             </Scrollbar>

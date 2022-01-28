@@ -1,21 +1,7 @@
 import React from 'react'
 import numeral from 'numeral';
 import {format, subMinutes, subSeconds} from 'date-fns';
-import {
-    Box,
-    Card,
-    CardHeader,
-    Checkbox,
-    Divider,
-    IconButton,
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TablePagination,
-    TableRow,
-    Typography
-} from '@mui/material'
+import { Box, Card, CardHeader, Checkbox, Divider, IconButton, Table, TableBody, TableCell, TableHead, TablePagination, TableRow, Typography} from '@mui/material'
 import Label from '../../Label';
 import Scrollbar from '../../Scrollbar';
 import ArrowRightIcon from '../../icons/ArrowRight';

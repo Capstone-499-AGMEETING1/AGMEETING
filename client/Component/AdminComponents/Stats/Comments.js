@@ -7,6 +7,7 @@ import {
     Card,
     CardActions,
     CardContent,
+    CardHeader,
     Divider,
     Grid,
     Paper,
@@ -31,14 +32,14 @@ const connections = [
     {
         id: '5e887b209c28ac3dd97f6db5',
         avatar: '/static/mock-images/avatars/avatar-fran_perez.png',
-        commonConnections: 8,
+        commonConnections: 'The point brought up is a good one',
         name: 'Fran Perez',
         status: 'Pending'
     },
     {
         id: '5e86805e2bafd54f66cc95c3',
         avatar: '/static/mock-images/avatars/avatar-miron_vitold.png',
-        commonConnections: 5,
+        commonConnections: 'The new graphic proposed has little relevancy to the current project',
         name: 'Miron Vitold',
         status: 'Accepted'
     }
@@ -85,7 +86,7 @@ const CommentsList = () => (
                             >
                                 <Link
                                     color="textPrimary"
-                                    variant="h5"
+                                    variant="title2"
                                 >
                                     {connection.name}
                                 </Link>
@@ -95,8 +96,6 @@ const CommentsList = () => (
                                     variant="body2"
                                 >
                                     {connection.commonConnections}
-                                    {' '}
-                                    connections in common
                                 </Typography>
                                 <Button
                                     color="primary"
@@ -153,143 +152,152 @@ const Comments = () => {
         <Box
             sx={{
                 backgroundColor: 'background.default',
-                p: 3,
-                mt: 2
+                p: 3
             }}
         >
-            <Grid
-                container
-                spacing={3}
-            >
+            <Card>
+                <CardHeader
+                    title={
+                        <Typography variant="h5">
+                            Current Comments
+                        </Typography>
+                    }
+                />
+                <Divider/>
                 <Grid
-                    item
-                    md={6}
-                    xs={12}
+                    container
+                    spacing={3}
                 >
-                    <Card>
-                        <CardContent
-                            sx={{
-                                alignItems: 'center',
-                                display: 'flex'
-                            }}
-                        >
-                            <Chart
-                                height="160"
-                                options={chartOptions}
-                                series={chartSeries}
-                                type="radialBar"
-                                width="160"
-                            />
-                            <Box
+                    <Grid
+                        item
+                        md={6}
+                        xs={12}
+                    >
+                        <Card>
+                            <CardContent
                                 sx={{
-                                    display: 'flex',
-                                    flex: 1
+                                    alignItems: 'center',
+                                    display: 'flex'
                                 }}
                             >
-                                <Box>
-                                    <Typography
-                                        color="primary"
-                                        variant="h4"
-                                    >
-                                        %60
-                                    </Typography>
-                                    <Typography
-                                        color="textPrimary"
-                                        sx={{mt: 1}}
-                                        variant="subtitle2"
-                                    >
-                                        Comments For
-                                    </Typography>
-                                </Box>
-                                <Box sx={{flexGrow: 1}}/>
-                                <Avatar
+                                <Chart
+                                    height="160"
+                                    options={chartOptions}
+                                    series={chartSeries}
+                                    type="radialBar"
+                                    width="160"
+                                />
+                                <Box
                                     sx={{
-                                        backgroundColor: alpha(theme.palette.success.main, 0.08),
-                                        color: 'success.main'
+                                        display: 'flex',
+                                        flex: 1
                                     }}
-                                    variant="rounded"
                                 >
-                                    <ChevronUpIcon fontSize="small"/>
-                                </Avatar>
-                            </Box>
-                        </CardContent>
-                        <Divider />
-                        <CardActions>
-                            <Button
-                                color="primary"
-                                endIcon={<ArrowRightIcon fontSize="small"/>}
-                                variant="text"
-                            >
-                                Comments For
-                            </Button>
-                        </CardActions>
-                    </Card>
-                </Grid>
-                <Grid
-                    item
-                    md={6}
-                    xs={12}
-                >
-                    <Card>
-                        <CardContent
-                            sx={{
-                                alignItems: 'center',
-                                display: 'flex'
-                            }}
-                        >
-                            <Chart
-                                height="160"
-                                options={chartOptions}
-                                series={chartSeries}
-                                type="radialBar"
-                                width="160"
-                            />
-                            <Box
+                                    <Box>
+                                        <Typography
+                                            color="primary"
+                                            variant="h4"
+                                        >
+                                            %60
+                                        </Typography>
+                                        <Typography
+                                            color="textPrimary"
+                                            sx={{mt: 1}}
+                                            variant="subtitle2"
+                                        >
+                                            Comments For
+                                        </Typography>
+                                    </Box>
+                                    <Box sx={{flexGrow: 1}}/>
+                                    <Avatar
+                                        sx={{
+                                            backgroundColor: alpha(theme.palette.success.main, 0.08),
+                                            color: 'success.main'
+                                        }}
+                                        variant="rounded"
+                                    >
+                                        <ChevronUpIcon fontSize="small"/>
+                                    </Avatar>
+                                </Box>
+                            </CardContent>
+                            <Divider />
+                            <CardActions>
+                                <Button
+                                    color="primary"
+                                    endIcon={<ArrowRightIcon fontSize="small"/>}
+                                    variant="text"
+                                >
+                                    Comments For
+                                </Button>
+                            </CardActions>
+                        </Card>
+                    </Grid>
+                    <Grid
+                        item
+                        md={6}
+                        xs={12}
+                    >
+                        <Card>
+                            <CardContent
                                 sx={{
-                                    display: 'flex',
-                                    flex: 1
+                                    alignItems: 'center',
+                                    display: 'flex'
                                 }}
                             >
-                                <Box>
-                                    <Typography
-                                        color="textPrimary"
-                                        variant="h4"
-                                    >
-                                        %40
-                                    </Typography>
-                                    <Typography
-                                        color="textPrimary"
-                                        sx={{mt: 1}}
-                                        variant="subtitle2"
-                                    >
-                                        Comments Against
-                                    </Typography>
-                                </Box>
-                                <Box sx={{flexGrow: 1}}/>
-                                <Avatar
+                                <Chart
+                                    height="160"
+                                    options={chartOptions}
+                                    series={chartSeries}
+                                    type="radialBar"
+                                    width="160"
+                                />
+                                <Box
                                     sx={{
-                                        backgroundColor: alpha(theme.palette.error.main, 0.08),
-                                        color: 'error.main'
+                                        display: 'flex',
+                                        flex: 1
                                     }}
-                                    variant="rounded"
                                 >
-                                    <ChevronDownIcon fontSize="small"/>
-                                </Avatar>
-                            </Box>
-                        </CardContent>
-                        <Divider/>
-                        <CardActions>
-                            <Button
-                                color="primary"
-                                endIcon={<ArrowRightIcon fontSize="small"/>}
-                                variant="text"
-                            >
-                                Comments Against
-                            </Button>
-                        </CardActions>
-                    </Card>
+                                    <Box>
+                                        <Typography
+                                            color="textPrimary"
+                                            variant="h4"
+                                        >
+                                            %40
+                                        </Typography>
+                                        <Typography
+                                            color="textPrimary"
+                                            sx={{mt: 1}}
+                                            variant="subtitle2"
+                                        >
+                                            Comments Against
+                                        </Typography>
+                                    </Box>
+                                    <Box sx={{flexGrow: 1}}/>
+                                    <Avatar
+                                        sx={{
+                                            backgroundColor: alpha(theme.palette.error.main, 0.08),
+                                            color: 'error.main'
+                                        }}
+                                        variant="rounded"
+                                    >
+                                        <ChevronDownIcon fontSize="small"/>
+                                    </Avatar>
+                                </Box>
+                            </CardContent>
+                            <Divider/>
+                            <CardActions>
+                                <Button
+                                    color="primary"
+                                    endIcon={<ArrowRightIcon fontSize="small"/>}
+                                    variant="text"
+                                >
+                                    Comments Against
+                                </Button>
+                            </CardActions>
+                        </Card>
+                    </Grid>
                 </Grid>
-            </Grid>
+            </Card>
             <CommentsList/>
         </Box>
     );

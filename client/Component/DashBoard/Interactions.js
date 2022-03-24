@@ -31,7 +31,7 @@ const Modal = (props) => {
 
     return (
         <Dialog maxWidth="md" onClose={onClose} open={open} {...other}>
-            <Box sx={{p: 3}}>
+            <Box sx={{p: 3, backgroundColor: 'background.default'}} >
                 <Card>
                     <CardHeader
                         action={

@@ -98,8 +98,7 @@ const Vault = () => {
         <Box
             sx={{
                 backgroundColor: 'background.default',
-                p: 3,
-                mt: 2
+                p: 3
             }}
         >
             <Card>
@@ -111,7 +110,11 @@ const Vault = () => {
                             <HelpOutlineIcon fontSize="small"/>
                         </IconButton>
                     )}
-                    title="Vault"
+                    title={
+                        <Typography variant="h5">
+                            Vault
+                        </Typography>
+                    }
                 />
                 <Divider/>
                 <Scrollbar>

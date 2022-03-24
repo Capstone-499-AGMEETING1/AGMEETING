@@ -4,7 +4,7 @@ import React from 'react'
 import {
     Avatar,
     Box,
-    Card,
+    Card, CardHeader,
     Checkbox,
     Divider,
     IconButton,
@@ -25,6 +25,7 @@ import PencilAltIcon from '../../icons/PencilAlt';
 import SearchIcon from '../../icons/Search';
 //const now = new Date();
 import axios from "axios";
+import DotsHorizontalIcon from "../../icons/DotsHorizontal";
 
 const customers = [];
 
@@ -67,11 +68,22 @@ const RegisteredUsers = () => (
     <Box
         sx={{
             backgroundColor: 'background.default',
-            p: 3,
-            mt: 2
+            p: 3
         }}
     >
         <Card>
+            <CardHeader
+                action={
+                    <IconButton>
+                        <DotsHorizontalIcon/>
+                    </IconButton>
+                }
+                title={
+                    <Typography variant="h5">
+                        Registered Users
+                    </Typography>
+                }
+            />
             <Divider/>
             <Box
                 sx={{

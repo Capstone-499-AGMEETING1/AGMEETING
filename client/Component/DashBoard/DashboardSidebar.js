@@ -106,29 +106,8 @@ const DashboardSidebar = (props) => {
       }}
     >
       <Scrollbar options={{ suppressScrollX: true }}>
-        <Box
-          sx={{
-            display: {
-              lg: 'none',
-              xs: 'flex'
-            },
-            justifyContent: 'center',
-            p: 2
-          }}
-        >
-          <RouterLink to="/">
-            <Logo
-              sx={{
-                height: 40,
-                width: 40
-              }}
-            />
-          </RouterLink>
-        </Box>
-        <Divider />
         <Box sx={{
-          p: 2,
-          mt: 2,
+          p: 2
           }}>
           {sections.map((section) => (
             <NavSection

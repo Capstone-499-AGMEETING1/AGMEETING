@@ -76,7 +76,7 @@ const SettingsDrawer = () => {
                 PaperProps={{
                     sx: {
                         p: 2,
-                        pt: 13,
+                        pt: 10,
                         width: 320
                     }
                 }}

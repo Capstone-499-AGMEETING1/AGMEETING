@@ -36,7 +36,7 @@ const Settings = () => {
                 sx={{
                     backgroundColor: 'background.default',
                     minHeight: '100%',
-                    py: 8
+                    py: 5
                 }}
             >
                 <Container maxWidth={settings.compact ? 'xl' : false}>
@@ -79,7 +79,7 @@ const Settings = () => {
                                     color="primary"
                                     startIcon={<ExclamationIcon fontSize="small" />}
                                     sx={{ m: 1 }}
-                                    variant="text"
+                                    variant="outlined"
                                 >
                                     Cancel
                                 </Button>

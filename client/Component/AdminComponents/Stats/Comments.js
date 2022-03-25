@@ -50,7 +50,8 @@ const CommentsList = () => (
         sx={{
             backgroundColor: 'background.default',
             minHeight: '100%',
-            p: 3
+            p: 3,
+            mt: 1
         }}
     >
         <Grid
@@ -173,7 +174,11 @@ const Comments = () => {
                         md={6}
                         xs={12}
                     >
-                        <Card>
+                        <Card sx={{
+                            border: 'none',
+                            boxShadow: 'none',
+                            mb: 1
+                        }}>
                             <CardContent
                                 sx={{
                                     alignItems: 'center',
@@ -237,7 +242,12 @@ const Comments = () => {
                         md={6}
                         xs={12}
                     >
-                        <Card>
+                        <Card sx={{
+                            border: 'none',
+                            boxShadow: 'none',
+                            mb: 1
+                        }}
+                        >
                             <CardContent
                                 sx={{
                                     alignItems: 'center',

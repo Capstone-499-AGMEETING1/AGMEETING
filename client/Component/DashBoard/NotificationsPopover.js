@@ -18,18 +18,8 @@ import {
 } from "@mui/material";
 import BellIcon from '../../icons/Bell';
 import ChatAltIcon from '../../icons/ChatAlt';
-import CreditCardIcon from '../../icons/CreditCard';
-import AddBoxIcon from '@mui/icons-material/AddBox';
 import {useDispatch, useSelector} from "react-redux";
 import {clearMessages} from "../../actions/message";
-
-const now = new Date();
-
-const iconsMap = {
-    item_uploaded: AddBoxIcon,
-    new_message: ChatAltIcon,
-    order_placed: CreditCardIcon
-};
 
 const NotificationsPopover = () => {
     const anchorRef = useRef(null);
@@ -46,7 +36,7 @@ const NotificationsPopover = () => {
     };
 
     const readAllMessages = () => {
-      dispatch(clearMessages());
+        dispatch(clearMessages());
     };
 
     return (
@@ -92,31 +82,29 @@ const NotificationsPopover = () => {
                                 color="textPrimary"
                                 variant="subtitle2"
                             >
-                                There are no notifications
+                                There are no notifications.
                             </Typography>
                         </Box>
                     )
                     : (
                         <>
                             <List disablePadding>
-                                {messages.map((message) => {
-                                    // const Icon = iconsMap[message.type];
-
+                                {messages.map((msg) => {
                                     return (
                                         <ListItem
                                             divider
-                                            key={message}
+                                            key={msg.date}
                                         >
-                                            {/*<ListItemAvatar>*/}
-                                            {/*    <Avatar*/}
-                                            {/*        sx={{*/}
-                                            {/*            backgroundColor: 'primary.main',*/}
-                                            {/*            color: 'primary.contrastText'*/}
-                                            {/*        }}*/}
-                                            {/*    >*/}
-                                            {/*        <Icon fontSize="small"/>*/}
-                                            {/*    </Avatar>*/}
-                                            {/*</ListItemAvatar>*/}
+                                            <ListItemAvatar>
+                                                <Avatar
+                                                    sx={{
+                                                        backgroundColor: 'primary.main',
+                                                        color: 'primary.contrastText'
+                                                    }}
+                                                >
+                                                    <ChatAltIcon fontSize="small"/>
+                                                </Avatar>
+                                            </ListItemAvatar>
                                             <ListItemText
                                                 primary={(
                                                     <Link
@@ -125,10 +113,10 @@ const NotificationsPopover = () => {
                                                         underline="none"
                                                         variant="subtitle2"
                                                     >
-                                                        {message}
+                                                        {msg.message}
                                                     </Link>
                                                 )}
-                                                // secondary={message.description}
+                                                secondary={(msg.date)}
                                             />
                                         </ListItem>
                                     );

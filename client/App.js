@@ -13,6 +13,7 @@ import 'material-react-toastify/dist/ReactToastify.css';
 import {io} from "socket.io-client";
 import {useDispatch, useSelector} from "react-redux";
 import {addMessage} from "./actions/message";
+import moment from "moment";
 
 
 export default function App() {
@@ -23,12 +24,12 @@ export default function App() {
     useEffect(() => {
         const socket = io();
         socket.on('message', (msg) => {
-            dispatch(addMessage(msg));
+            dispatch(addMessage(msg, moment().format('MMMM Do YYYY, h:mm:ss a')));
         });
 
         if (user && user.meetingId) {
             socket.on(user.meetingId, (msg) => {
-                dispatch(addMessage(msg));
+                dispatch(addMessage(msg, moment().format('MMMM Do YYYY, h:mm:ss a')));
             });
         }
     }, []);
@@ -48,11 +49,8 @@ export default function App() {
                 <ToastContainer/>
                 <CssBaseline/>
                 <RTL direction={settings.direction}>
-                    {/* <Toaster position="top-center" /> */}
                     <SettingsDrawer/>
                     {content}
-                    {/* Declarative route */}
-                    {/* <Routes /> */}
                 </RTL>
             </ThemeProvider>
         </ErrorBoundary>

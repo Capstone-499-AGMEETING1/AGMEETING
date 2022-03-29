@@ -1,11 +1,14 @@
 import {ADD_MESSAGE, CLEAR_MESSAGES} from './types';
 import MessageService from "../services/message.service";
 
-export const addMessage = (msg) => (dispatch) => {
-    MessageService.addMessage(msg);
+export const addMessage = (msg, date) => (dispatch) => {
+    MessageService.addMessage(msg, date);
     dispatch({
         type: ADD_MESSAGE,
-        payload: msg
+        payload: {
+            message: msg,
+            date: date
+        }
     });
 };
 

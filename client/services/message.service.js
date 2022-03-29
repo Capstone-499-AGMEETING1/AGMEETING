@@ -1,6 +1,9 @@
-const addMessage = (msg) => {
+const addMessage = (msg, date) => {
     let messages = localStorage.getItem('messages') ? JSON.parse(localStorage.getItem('messages')) : [];
-    messages.push(msg);
+    messages.push({
+        message: msg,
+        date: date
+    });
     localStorage.setItem('messages', JSON.stringify(messages));
 };
 

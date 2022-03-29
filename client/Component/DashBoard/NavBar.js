@@ -56,9 +56,11 @@ const NavBar = (props) => {
                 <Box sx={{ml: 1}}>
                     {/* <ContactsPopover /> */}
                 </Box>
-                <Box sx={{ml: 1}}>
-                    <NotificationsPopover/>
-                </Box>
+                {user &&
+                    <Box sx={{ml: 1}}>
+                        <NotificationsPopover/>
+                    </Box>
+                }
                 {user &&
                     <Box sx={{ml: 2}}>
                         <AccountPopover/>

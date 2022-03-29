@@ -1,13 +1,15 @@
-import {SET_MESSAGE, CLEAR_MESSAGE} from '../actions/types';
+import {ADD_MESSAGE, CLEAR_MESSAGES} from '../actions/types';
 
-const initialState = {};
+const messages = JSON.parse(localStorage.getItem('messages'));
+const initialState = messages ? {messages: messages} : {messages: []};
+
 export default function (state = initialState, action) {
     const {type, payload} = action;
     switch(type) {
-        case SET_MESSAGE:
-            return {message: payload};
-        case CLEAR_MESSAGE:
-            return {message: ''};
+        case ADD_MESSAGE:
+            return {messages: [...state.messages, payload]};
+        case CLEAR_MESSAGES:
+            return {messages: []};
         default:
             return state;
     }

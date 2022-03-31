@@ -1,6 +1,6 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import numeral from 'numeral';
-import {format, subMinutes, subSeconds} from 'date-fns';
+import { format, subMinutes, subSeconds } from 'date-fns';
 import {
     Box,
     Button,
@@ -26,7 +26,7 @@ import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import { UploadFile } from "@mui/icons-material";
 import AddFileModal from './AddFileModal';
 import VaultHelpModal from "./VaultHelpModal";
-
+import { useSelector } from "react-redux";
 
 const now = new Date();
 
@@ -79,7 +79,7 @@ const getStatusLabel = (paymentStatus) => {
             text: 'Rejected'
         }
     };
-    const {text, color} = map[paymentStatus];
+    const { text, color } = map[paymentStatus];
     return (
         <Label color={color}>
             {text}
@@ -107,6 +107,30 @@ const Vault = () => {
     const handleApplyHelpModalClose = () => {
         setIsHelpApplicationOpen(false);
     };
+
+    const { user } = useSelector((state) => state.auth);
+    const showModal = () => {
+        if (user && user.isModerator) {
+            return (
+            <Button
+            color="primary"
+            onClick={handleApplyModalOpen}
+            startIcon={<UploadFile fontSize="small" />}
+            sx={{
+                ml: 2
+            }}
+            variant="contained"
+            size="small"
+        >
+            Add File
+        </Button>
+            )
+        }
+        else return (
+         null
+        );
+    }
+
     return (
         <Box
             sx={{
@@ -121,34 +145,25 @@ const Vault = () => {
                         <IconButton
                             onClick={handleApplyHelpModalOpen}
                         >
-                            <HelpOutlineIcon fontSize="small"/>
+                            <HelpOutlineIcon fontSize="small" />
                         </IconButton>
                     )}
                     title={(
-                    <Grid container>
+                        <Grid container>
                             <Grid>
                                 <Typography variant="title2">Vault</Typography>
-                                </Grid>
-                                <Grid>
-                                <Button
-                                    color="primary"
-                                    onClick={handleApplyModalOpen}
-                                    startIcon={<UploadFile fontSize="small"/>}
-                                    sx={{
-                                        ml: 2
-                                    }}
-                                    variant="contained"
-                                    size="small"
-                                >
-                                    Add File
-                                </Button>
+                            </Grid>
+                            <Grid>
+
+                               {showModal()}
+
                             </Grid>
                         </Grid>
                     )}
                 />
-                <Divider/>
+                <Divider />
                 <Scrollbar>
-                    <Box sx={{minWidth: 1150}}>
+                    <Box sx={{ minWidth: 1150 }}>
                         <Table>
                             <TableHead>
                                 <TableRow>
@@ -181,7 +196,7 @@ const Vault = () => {
                                         key={order.id}
                                     >
                                         <TableCell padding="checkbox">
-                                            <Checkbox color="primary"/>
+                                            <Checkbox color="primary" />
                                         </TableCell>
                                         <TableCell>
                                             <Typography
@@ -223,10 +238,10 @@ const Vault = () => {
                                         </TableCell>
                                         <TableCell align="right">
                                             <IconButton>
-                                                <PencilAltIcon fontSize="small"/>
+                                                <PencilAltIcon fontSize="small" />
                                             </IconButton>
                                             <IconButton>
-                                                <ArrowRightIcon fontSize="small"/>
+                                                <ArrowRightIcon fontSize="small" />
                                             </IconButton>
                                         </TableCell>
                                     </TableRow>
@@ -246,9 +261,7 @@ const Vault = () => {
                     rowsPerPage={5}
                     rowsPerPageOptions={[5, 10, 25]}
                 />
-                  <AddFileModal
-                    // authorAvatar={project.author.avatar}
-                    // authorName={project.author.name}
+                <AddFileModal
                     onApply={handleApplyModalClose}
                     onClose={handleApplyModalClose}
                     open={isApplicationOpen}

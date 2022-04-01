@@ -25,29 +25,91 @@ import ArrowRightIcon from '../../icons/ArrowRight';
 import PencilAltIcon from '../../icons/PencilAlt';
 import SearchIcon from '../../icons/Search';
 import DotsHorizontalIcon from "../../icons/DotsHorizontal";
-import axios from "axios";
-
 
 const now = new Date();
 
-const customers = [];
-
-const populateData = (data) => {
-    customers.push(data)
-}
-
-function axiosTest(populateData) {
-    axios.get('http://localhost:3000/api/users/')
-        .then(function (response) {
-            populateData(response.data);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-}
-
-axiosTest(populateData);
-customers.flat(Infinity);
+const customers = [
+    {
+        id: '5e887ac47eed253091be10cb',
+        avatar: '/static/mock-images/avatars/avatar-carson_darrin.png',
+        city: 'Cleveland',
+        country: 'USA',
+        currency: '$',
+        email: 'carson.darrin@devias.io',
+        hasAcceptedMarketing: true,
+        isProspect: false,
+        isReturning: true,
+        name: 'Carson Darrin',
+        state: 'Ohio',
+        totalAmountSpent: 300.00,
+        totalOrders: 3,
+        updatedAt: subDays(subHours(now, 7), 1).getTime()
+    },
+    {
+        id: '5e887b209c28ac3dd97f6db5',
+        avatar: '/static/mock-images/avatars/avatar-fran_perez.png',
+        city: 'Atlanta',
+        country: 'USA',
+        currency: '$',
+        email: 'fran.perez@devias.io',
+        hasAcceptedMarketing: true,
+        isProspect: true,
+        isReturning: false,
+        name: 'Fran Perez',
+        state: 'Georgia',
+        totalAmountSpent: 0.00,
+        totalOrders: 0,
+        updatedAt: subDays(subHours(now, 1), 2).getTime()
+    },
+    {
+        id: '5e887b7602bdbc4dbb234b27',
+        avatar: '/static/mock-images/avatars/avatar-jie_yan_song.png',
+        city: 'North Canton',
+        country: 'USA',
+        currency: '$',
+        email: 'jie.yan.song@devias.io',
+        hasAcceptedMarketing: false,
+        isProspect: false,
+        isReturning: false,
+        name: 'Jie Yan Song',
+        state: 'Ohio',
+        totalAmountSpent: 5600.00,
+        totalOrders: 6,
+        updatedAt: subDays(subHours(now, 4), 2).getTime()
+    },
+    {
+        id: '5e86809283e28b96d2d38537',
+        avatar: '/static/mock-images/avatars/avatar-jane_rotanson.png',
+        city: 'Madrid',
+        country: 'Spain',
+        currency: '$',
+        email: 'jane.rotanson@devias.io',
+        hasAcceptedMarketing: true,
+        isProspect: false,
+        isReturning: true,
+        name: 'Jane Rotanson',
+        state: 'Madrid',
+        totalAmountSpent: 500.00,
+        totalOrders: 1,
+        updatedAt: subDays(subHours(now, 11), 2).getTime()
+    },
+    {
+        id: '5e86805e2bafd54f66cc95c3',
+        avatar: '/static/mock-images/avatars/avatar-miron_vitold.png',
+        city: 'San Diego',
+        country: 'USA',
+        currency: '$',
+        email: 'miron.vitold@devias.io',
+        hasAcceptedMarketing: true,
+        isProspect: true,
+        isReturning: false,
+        name: 'Miron Vitold',
+        totalAmountSpent: 0.00,
+        totalOrders: 0,
+        state: 'California',
+        updatedAt: subDays(subHours(now, 7), 3).getTime()
+    }
+];
 
 const sortOptions = [
     {
@@ -144,20 +206,20 @@ const LoggedinUsers = () => (
             </Box>
             <Scrollbar>
                 <Box sx={{ minWidth: 700 }}>
-                <Table>
+                    <Table>
                         <TableHead>
                             <TableRow>
                                 <TableCell padding="checkbox">
-                                    <Checkbox color="primary"/>
+                                    <Checkbox color="primary" />
                                 </TableCell>
                                 <TableCell>
                                     Name
                                 </TableCell>
                                 <TableCell>
-                                    Email
+                                    Location
                                 </TableCell>
                                 <TableCell>
-                                    Meeting ID
+                                    Orders
                                 </TableCell>
                                 <TableCell>
                                     Role
@@ -168,14 +230,13 @@ const LoggedinUsers = () => (
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {customers.flat().map((user) => (
-
+                            {customers.map((customer) => (
                                 <TableRow
                                     hover
-                                    key={user.id}
+                                    key={customer.id}
                                 >
                                     <TableCell padding="checkbox">
-                                        <Checkbox color="primary"/>
+                                        <Checkbox color="primary" />
                                     </TableCell>
                                     <TableCell>
                                         <Box
@@ -185,38 +246,44 @@ const LoggedinUsers = () => (
                                             }}
                                         >
                                             <Avatar
-                                                src={user.avatar}
+                                                src={customer.avatar}
                                                 sx={{
                                                     height: 42,
                                                     width: 42
                                                 }}
                                             />
-                                            <Box sx={{ml: 1}}>
+                                            <Box sx={{ ml: 1 }}>
                                                 <Link
                                                     color="inherit"
                                                     variant="subtitle2"
                                                 >
-                                                    {user.firstName + " " + user.lastName}
+                                                    {customer.name}
                                                 </Link>
-
+                                                <Typography
+                                                    color="textSecondary"
+                                                    variant="body2"
+                                                >
+                                                    {customer.email}
+                                                </Typography>
                                             </Box>
                                         </Box>
                                     </TableCell>
                                     <TableCell>
-                                        {user.email}
+                                        {`${customer.city}, ${customer.state}, ${customer.country}`}
                                     </TableCell>
                                     <TableCell>
-                                        {user.meetingId}
+                                        {customer.totalOrders}
                                     </TableCell>
                                     <TableCell>
-                                        Role Pending
+                                        {numeral(customer.totalAmountSpent)
+                                            .format(`${customer.currency}0,0.00`)}
                                     </TableCell>
                                     <TableCell align="right">
                                         <IconButton>
-                                            <PencilAltIcon fontSize="small"/>
+                                            <PencilAltIcon fontSize="small" />
                                         </IconButton>
                                         <IconButton>
-                                            <ArrowRightIcon fontSize="small"/>
+                                            <ArrowRightIcon fontSize="small" />
                                         </IconButton>
                                     </TableCell>
                                 </TableRow>

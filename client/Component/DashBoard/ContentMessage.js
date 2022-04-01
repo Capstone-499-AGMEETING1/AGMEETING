@@ -14,23 +14,18 @@ import {
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import toast from "react-hot-toast";
 import axios from "axios";
-import {useSelector} from "react-redux";
-import {toast} from "material-react-toastify";
+
+const menuOptions = [
+    'As General Message',
+    'Message to Admin/Moderator'
+];
+
 
 
 const ContentMessage = (props) => {
     const {onClose, onApply, open, ...other} = props;
-    const {user} = useSelector((state) => state.auth);
-    let menuOptions;
-    if (user && user.isModerator) {
-        menuOptions = [
-            'General Message',
-            'Message to Meeting Room'
-        ];
-    } else {
-        menuOptions = ['Message to Meeting Room'];
-    }
     const [menuOption, setMenuOption] = useState(menuOptions[0]);
     const [value, setValue] = useState('');
 
@@ -39,28 +34,9 @@ const ContentMessage = (props) => {
     };
 
     const sendMessage = () => {
-        if (menuOption === 'General Message') {
-            axios.post('http://localhost:3000/api/chat', {
-                message: value,
-                meetingId: user.meetingId,
-                isGeneral: true
-            }, {withCredentials: true}).then(() => {
-                onClose();
-            }).catch((err) => {
-                toast.error(err.response.data.message);
-            });
-        } else {
-            axios.post('http://localhost:3000/api/chat', {
-                message: value,
-                meetingId: user.meetingId,
-                isGeneral: false
-            }, {withCredentials: true}).then(() => {
-                onClose();
-            }).catch((err) => {
-                toast.error(err.response.data.message);
-            });
-        }
-        setValue('');
+        axios.post('http://localhost:3000/api/chat', {message: value}, {withCredentials: true}).then(() => {
+            onClose();
+        });
     }
 
     return (
@@ -102,8 +78,8 @@ const ContentMessage = (props) => {
                         )}
                         title="Content Messages"
                     />
-                    <Divider/>
-                    <Box sx={{p: 2,}}>
+                    <Divider />
+                    <Box sx={{ p: 2, }}>
                         <Typography
                             align="center"
                             color="textSecondary"
@@ -145,7 +121,7 @@ const ContentMessage = (props) => {
                                         name="option"
                                         onChange={(event) => setMenuOption(event.target.value)}
                                         select
-                                        SelectProps={{native: true}}
+                                        SelectProps={{ native: true }}
                                         value={menuOption}
                                         variant="outlined"
                                         size="small"

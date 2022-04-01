@@ -205,6 +205,25 @@ const DashboardSidebar = (props) => {
       </Scrollbar>
     </Box>
   );
+    if (lgUp) {
+        return (
+            <Drawer
+                anchor="left"
+                open
+                PaperProps={{
+                    sx: {
+                        backgroundColor: 'background.paper',
+                        height: 'calc(100% - 64px) !important',
+                        top: '64px !Important',
+                        width: 280
+                    }
+                }}
+                variant="permanent"
+            >
+                {content}
+            </Drawer>
+        );
+    }
 
 
     return (

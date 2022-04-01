@@ -14,6 +14,8 @@ const cors = require('cors');
 const http = require('http')
 const socketIo = require('socket.io');
 const server = http.createServer(app);
+const multer = require('multer');
+
 const {joinUser, getCurrentUser, disconnectUser} = require('./chatusers.js');
 
 const io = socketIo(server, {
@@ -21,6 +23,18 @@ const io = socketIo(server, {
         origin: 'http://localhost:3000'
     }
 });
+
+//multer local storage
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, './client/uploads')
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.fieldname + '-' + Date.now())
+    }
+  })
+   
+const upload = multer({ storage: storage })
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "../public")));
@@ -46,6 +60,31 @@ app.get("*", (req, res) => {
         }
     });
 });
+
+//multer single file upload
+app.post('/uploadfile', upload.single('myFile'), (req, res, next) => {
+    const file = req.file
+    if (!file) {
+      const error = new Error('Please upload a file')
+      error.httpStatusCode = 400
+      return next(error)
+    }
+      res.send(file)
+    
+  })
+
+//multer multi file upload
+app.post('/uploadmultiple', upload.array('myFiles', 12), (req, res, next) => {
+    const files = req.files
+    if (!files) {
+      const error = new Error('Please choose files')
+      error.httpStatusCode = 400
+      return next(error)
+    }
+   
+      res.send(files)
+    
+})
 
 io.on('connection', (socket) => {
     console.log('A new client has connected.');
@@ -83,6 +122,8 @@ io.on('connection', (socket) => {
         });
     });
 });
+
+
 
 db.sequelize.sync().then(() => {
     server.listen(port, () => {

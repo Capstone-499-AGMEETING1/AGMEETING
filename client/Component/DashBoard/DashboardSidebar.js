@@ -1,102 +1,104 @@
-import React, { useState, useEffect } from 'react';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
+import {Link as RouterLink, useLocation} from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Box, Button, Divider, Drawer, Typography, useMediaQuery } from '@mui/material';
+import {Box, Button, Divider, Drawer, Typography, useMediaQuery} from '@mui/material';
 import Logo from '../../Logo';
 import NavSection from '../../NavSection';
 import Scrollbar from '../../Scrollbar';
 import Modal from './Interactions'
 import VotesModal from "../Votes/VotesModal";
-import { AdminPanelSettings, Event, SettingsAccessibility, Summarize, Work } from '@material-ui/icons';
+import {AdminPanelSettings, Event, SettingsAccessibility, Summarize, Work} from '@material-ui/icons';
 import ContentMessage from "./ContentMessage";
-const sections = [
-  {
-    title: 'General',
-    items: [
-      {
-        title: 'Session',
-        path: '/',
-        icon: <Summarize fontSize="small" />
-      },
-      {
-        title: 'Agenda',
-        path: '/agenda',
-        icon: <Event fontSize="small" />
-      },
-      {
-        title: 'Vault',
-        path: '/Vault',
-        icon: <Work fontSize="small" />
-      }
-    ]
-  },
+import {useSelector} from "react-redux";
 
-  {
-    title: 'Management',
-    items: [
-      {
-        title: 'Users',
-        path: '/LoggedinUsers',
-        icon: <AdminPanelSettings fontSize="small" />,
-        children: [
-          {
-            title: 'Logged In Users',
-            path: '/loggedinUsers'
-          },
-          {
-            title: 'Registered Users',
-            path: '/registeredusers'
-          },
-          {
-            title: 'Stats',
-            path: '/stats'
-          }
+const sections = [
+    {
+        title: 'General',
+        items: [
+            {
+                title: 'Session',
+                path: '/',
+                icon: <Summarize fontSize="small"/>
+            },
+            {
+                title: 'Agenda',
+                path: '/agenda',
+                icon: <Event fontSize="small"/>
+            },
+            {
+                title: 'Vault',
+                path: '/Vault',
+                icon: <Work fontSize="small"/>
+            }
         ]
-      },
-      {
-        title: 'General Settings',
-        path: '/settings',
-        icon: <SettingsAccessibility fontSize="small" />
-      }
-    ]
-  }
+    },
+
+    {
+        title: 'Management',
+        items: [
+            {
+                title: 'Users',
+                path: '/LoggedinUsers',
+                icon: <AdminPanelSettings fontSize="small"/>,
+                children: [
+                    {
+                        title: 'Logged In Users',
+                        path: '/loggedinUsers'
+                    },
+                    {
+                        title: 'Registered Users',
+                        path: '/registeredusers'
+                    },
+                    {
+                        title: 'Stats',
+                        path: '/stats'
+                    }
+                ]
+            },
+            {
+                title: 'General Settings',
+                path: '/settings',
+                icon: <SettingsAccessibility fontSize="small"/>
+            }
+        ]
+    }
 ];
 
 const DashboardSidebar = (props) => {
-  const { onMobileClose, openMobile } = props;
-  const location = useLocation();
-  const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'));
+    const {onMobileClose, openMobile} = props;
+    const location = useLocation();
+    const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'));
+    const {user} = useSelector((state) => state.auth);
 
-  useEffect(() => {
-    if (openMobile && onMobileClose) {
-      onMobileClose();
-    }
-  }, [location.pathname]);
+    useEffect(() => {
+        if (openMobile && onMobileClose) {
+            onMobileClose();
+        }
+    }, [location.pathname]);
 
-  const [isApplicationOpen, setIsApplicationOpen] = useState(false);
-  const handleApplyModalOpen = () => {
-    setIsApplicationOpen(true);
-  };
-  const handleApplyModalClose = () => {
-    setIsApplicationOpen(false);
-  };
+    const [isApplicationOpen, setIsApplicationOpen] = useState(false);
+    const handleApplyModalOpen = () => {
+        setIsApplicationOpen(true);
+    };
+    const handleApplyModalClose = () => {
+        setIsApplicationOpen(false);
+    };
 
-  const [isVotesApplicationOpen, setIsVotesApplication] = useState(false);
-  const handleApplyVotesModalClose = () => {
-    setIsVotesApplication(false);
-  };
-  const handleApplyVotesModalOpen =() => {
-    setIsVotesApplication(true);
-  };
+    const [isVotesApplicationOpen, setIsVotesApplication] = useState(false);
+    const handleApplyVotesModalClose = () => {
+        setIsVotesApplication(false);
+    };
+    const handleApplyVotesModalOpen = () => {
+        setIsVotesApplication(true);
+    };
 
-  const [isContentMessageOpen, setIsContentMessage] = useState(false);
-  const handleContentMessageClose = () => {
-    setIsContentMessage(false);
-  };
-  const handleContentMessageOpen =() => {
-    setIsContentMessage(true);
-  };
-
+    const [isContentMessageOpen, setIsContentMessage] = useState(false);
+    const handleContentMessageClose = () => {
+        setIsContentMessage(false);
+    };
+    const handleContentMessageOpen = () => {
+        setIsContentMessage(true);
+    };
   const content = (
     <Box
       sx={{
@@ -204,54 +206,35 @@ const DashboardSidebar = (props) => {
     </Box>
   );
 
-  if (lgUp) {
-    return (
-      <Drawer
-        anchor="left"
-        open
-        PaperProps={{
-          sx: {
-            backgroundColor: 'background.paper',
-            height: 'calc(100% - 64px) !important',
-            top: '64px !Important',
-            width: 280
-          }
-        }}
-        variant="permanent"
-      >
-        {content}
-      </Drawer>
-    );
-  }
 
-  return (
-    <>
-      <Drawer
-        anchor="left"
-        onClose={onMobileClose}
-        open={openMobile}
-        PaperProps={{
-          sx: {
-            backgroundColor: 'background.paper',
-            width: 280
-          }
-        }}
-        variant="temporary"
-      >
-        {content}
-      </Drawer>
-      <Modal
-        onApply={handleApplyModalClose}
-        onClose={handleApplyModalClose}
-        open={isApplicationOpen}
-      />
-    </>
-  );
+    return (
+        <>
+            <Drawer
+                anchor="left"
+                onClose={onMobileClose}
+                open={openMobile}
+                PaperProps={{
+                    sx: {
+                        backgroundColor: 'background.paper',
+                        width: 280
+                    }
+                }}
+                variant="temporary"
+            >
+                {content}
+            </Drawer>
+            <Modal
+                onApply={handleApplyModalClose}
+                onClose={handleApplyModalClose}
+                open={isApplicationOpen}
+            />
+        </>
+    );
 };
 
 DashboardSidebar.propTypes = {
-  onMobileClose: PropTypes.func,
-  openMobile: PropTypes.bool
+    onMobileClose: PropTypes.func,
+    openMobile: PropTypes.bool
 };
 
 export default DashboardSidebar;

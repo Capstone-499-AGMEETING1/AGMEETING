@@ -3,10 +3,12 @@ import numeral from 'numeral';
 import {format, subMinutes, subSeconds} from 'date-fns';
 import {
     Box,
+    Button,
     Card,
     CardHeader,
     Checkbox,
     Divider,
+    Grid,
     IconButton,
     Table,
     TableBody,
@@ -21,6 +23,8 @@ import Scrollbar from '../../Scrollbar';
 import ArrowRightIcon from '../../icons/ArrowRight';
 import PencilAltIcon from '../../icons/PencilAlt';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import { UploadFile } from "@mui/icons-material";
+import AddFileModal from './AddFileModal';
 import VaultHelpModal from "./VaultHelpModal";
 
 
@@ -85,6 +89,15 @@ const getStatusLabel = (paymentStatus) => {
 
 const Vault = () => {
 
+    const [isApplicationOpen, setIsApplicationOpen] = useState(false);
+
+    const handleApplyModalOpen = () => {
+        setIsApplicationOpen(true);
+    };
+
+    const handleApplyModalClose = () => {
+        setIsApplicationOpen(false);
+    };
 
     const [isHelpApplicationOpen, setIsHelpApplicationOpen] = useState(false);
     const handleApplyHelpModalOpen = () => {
@@ -110,11 +123,27 @@ const Vault = () => {
                             <HelpOutlineIcon fontSize="small"/>
                         </IconButton>
                     )}
-                    title={
-                        <Typography variant="h5">
-                            Vault
-                        </Typography>
-                    }
+                    title={(
+                    <Grid container>
+                            <Grid>
+                                <Typography variant="title2">Vault</Typography>
+                                </Grid>
+                                <Grid>
+                                <Button
+                                    color="primary"
+                                    onClick={handleApplyModalOpen}
+                                    startIcon={<UploadFile fontSize="small"/>}
+                                    sx={{
+                                        ml: 2
+                                    }}
+                                    variant="contained"
+                                    size="small"
+                                >
+                                    Add File
+                                </Button>
+                            </Grid>
+                        </Grid>
+                    )}
                 />
                 <Divider/>
                 <Scrollbar>
@@ -215,6 +244,13 @@ const Vault = () => {
                     page={0}
                     rowsPerPage={5}
                     rowsPerPageOptions={[5, 10, 25]}
+                />
+                  <AddFileModal
+                    // authorAvatar={project.author.avatar}
+                    // authorName={project.author.name}
+                    onApply={handleApplyModalClose}
+                    onClose={handleApplyModalClose}
+                    open={isApplicationOpen}
                 />
                 <VaultHelpModal
                     onApply={handleApplyHelpModalClose}

@@ -12,14 +12,22 @@ import SettingsDrawer from "./SettingsDrawer";
 import {toast, ToastContainer} from "material-react-toastify";
 import 'material-react-toastify/dist/ReactToastify.css';
 import {io} from "socket.io-client";
+import {useSelector} from "react-redux";
 
 
 export default function App() {
+    const {user} = useSelector((state) => state.auth);
     useEffect(() => {
         const socket = io();
         socket.on('message', (msg) => {
             toast.success(msg);
         });
+
+        if (user && user.meetingId) {
+            socket.on(user.meetingId, (msg) => {
+                toast.success(msg);
+            });
+        }
     }, []);
 
     const {settings} = useSettings();

@@ -16,7 +16,7 @@ import Settings from './Component/AdminComponents/Settings/Settings'
 import SignIn from './Login/signin'
 import SignUp from './Login/signup'
 import ProtectedRoute from "./ProtectedRoute";
-import AdminModeratorRoute from "../AdminModeratorRoute";
+import AdminModeratorRoute from "./AdminModeratorRoute";
 
 const routes = [
     {

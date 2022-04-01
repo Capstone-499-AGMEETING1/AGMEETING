@@ -39,7 +39,7 @@ const ApprovalTable = () => (
         }}
     >
         <Card>
-            <CardHeader title="Intro and approval of the Chair Voting Session"/>
+            <CardHeader title="Intro and Approval of the Chair Voting Session"/>
             <Divider/>
             <Scrollbar>
                 <Box sx={{minWidth: 700}}>

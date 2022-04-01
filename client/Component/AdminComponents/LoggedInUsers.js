@@ -10,7 +10,7 @@ import {
     IconButton,
     InputAdornment,
     Link,
-    Tab,
+    CardHeader,
     Table,
     TableBody,
     TableCell,
@@ -24,7 +24,9 @@ import Scrollbar from '../../Scrollbar';
 import ArrowRightIcon from '../../icons/ArrowRight';
 import PencilAltIcon from '../../icons/PencilAlt';
 import SearchIcon from '../../icons/Search';
+import DotsHorizontalIcon from "../../icons/DotsHorizontal";
 import axios from "axios";
+
 
 const now = new Date();
 
@@ -70,11 +72,22 @@ const LoggedinUsers = () => (
     <Box
         sx={{
             backgroundColor: 'background.default',
-            p: 3,
-            mt: 2
+            p: 3
         }}
     >
         <Card>
+            <CardHeader
+                action={
+                    <IconButton>
+                        <DotsHorizontalIcon/>
+                    </IconButton>
+                }
+                title={
+                    <Typography variant="h5">
+                        Logged In Users
+                    </Typography>
+                }
+            />
             <Divider/>
             <Box
                 sx={{

@@ -16,6 +16,8 @@ import ArrowRightIcon from '../../icons/ArrowRight';
 import ChevronDownIcon from '../../icons/ChevronDown';
 import ChevronUpIcon from '../../icons/ChevronUp';
 
+// Why is this here? It is the same as the comments.js in the stats folder...
+
 const Comments = () => {
     const theme = useTheme();
 
@@ -62,6 +64,14 @@ const Comments = () => {
                 container
                 spacing={3}
             >
+                <Grid item xs="12">
+                    <Typography
+                        color="textPrimary"
+                        variant="h5"
+                    >
+                        Current Comments
+                    </Typography>
+                </Grid>
                 <Grid
                     item
                     md={6}

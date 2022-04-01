@@ -111,8 +111,7 @@ const Vault = () => {
         <Box
             sx={{
                 backgroundColor: 'background.default',
-                p: 3,
-                mt: 2
+                p: 3
             }}
         >
             <Card>
@@ -127,7 +126,7 @@ const Vault = () => {
                     title={(
                     <Grid container>
                             <Grid>
-                                <Typography variant="title2">Vault</Typography>
+                                <Typography variant="h5">Vault</Typography>
                                 </Grid>
                                 <Grid>
                                 <Button
@@ -138,7 +137,7 @@ const Vault = () => {
                                         ml: 2
                                     }}
                                     variant="contained"
-                                    size="small"
+                                    size="medium"
                                 >
                                     Add File
                                 </Button>

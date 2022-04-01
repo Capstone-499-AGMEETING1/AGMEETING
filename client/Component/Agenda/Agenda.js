@@ -135,8 +135,7 @@ const Agenda = () => {
         <Box
             sx={{
                 backgroundColor: 'background.default',
-                p: 3,
-                mt: 2
+                p: 3
             }}
         >
             <Card>
@@ -151,7 +150,7 @@ const Agenda = () => {
                     title={(
                         <Grid container>
                             <Grid>
-                                <Typography variant="title2">
+                                <Typography variant="h5">
                                     Agenda
                                 </Typography>
                             </Grid>
@@ -164,7 +163,7 @@ const Agenda = () => {
                                         ml: 2
                                     }}
                                     variant="contained"
-                                    size="small"
+                                    size="medium"
                                 >
                                     Add Item
                                 </Button>

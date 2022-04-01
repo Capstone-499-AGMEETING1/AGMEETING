@@ -6,7 +6,7 @@ import Votes from "../../Votes/votes";
 const Stats = () => {
     return (
         <>
-            <Votes/>
+            <Votes />
             <Comments />
             <ReadyToVote />
         </>

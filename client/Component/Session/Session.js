@@ -12,7 +12,8 @@ import {
     List,
     ListItem,
     ListItemText,
-    Tooltip
+    Tooltip,
+    Typography
 } from '@mui/material';
 import Scrollbar from '../../Scrollbar';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
@@ -140,8 +141,7 @@ const Session = () => {
     <Box
         sx={{
             backgroundColor: 'background.default',
-            p: 3,
-            mt: 2
+            p: 3
         }}
     >
         <Card>
@@ -153,7 +153,11 @@ const Session = () => {
                             <HelpOutlineIcon fontSize="small"/>
                     </IconButton>
                 )}
-                title="Session"
+                title={
+                    <Typography variant="h5">
+                        Session
+                    </Typography>
+                }
             />
             <Divider/>
             <Scrollbar>

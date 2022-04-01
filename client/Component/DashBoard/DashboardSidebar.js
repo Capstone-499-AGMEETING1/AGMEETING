@@ -99,136 +99,112 @@ const DashboardSidebar = (props) => {
     const handleContentMessageOpen = () => {
         setIsContentMessage(true);
     };
-
-    const content = (
-        <Box
-            sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                height: '100%'
-            }}
-        >
-            <Scrollbar options={{suppressScrollX: true}}>
-                <Box
-                    sx={{
-                        display: {
-                            lg: 'none',
-                            xs: 'flex'
-                        },
-                        justifyContent: 'center',
-                        p: 2
-                    }}
-                >
-                    <RouterLink to="/">
-                        <Logo
-                            sx={{
-                                height: 40,
-                                width: 40
-                            }}
-                        />
-                    </RouterLink>
-                </Box>
-                <Divider/>
-                <Box sx={{
-                    p: 2,
-                    mt: 2,
-                }}>
-                    {sections.map((section) => (
-                        <NavSection
-                            key={section.title}
-                            pathname={location.pathname}
-                            sx={{
-                                '& + &': {
-                                    mt: 3
-                                }
-                            }}
-                            {...section}
-                        />
-                    ))}
-                </Box>
-                <Divider/>
-                <Box sx={{p: 2}}>
-                    <Button
-                        color="primary"
-                        onClick={handleApplyModalOpen}
-                        fullWidth
-                        sx={{mt: 2}}
-                        to="#"
-                        variant="contained"
-                    >
-                        Interactions
-                    </Button>
-                    <Modal
-                        onApply={handleApplyModalClose}
-                        onClose={handleApplyModalClose}
-                        open={isApplicationOpen}
-                    />
-                    <Button
-                        color="primary"
-                        onClick={handleApplyVotesModalOpen}
-                        fullWidth
-                        sx={{
-                            mt: 2
-                        }}
-                        to="#"
-                        variant="contained"
-                    >
-                        Current Votes
-                    </Button>
-                    <VotesModal
-                        onApply={handleApplyVotesModalClose}
-                        onClose={handleApplyVotesModalClose}
-                        open={isVotesApplicationOpen}
-                    />
-                    {user &&
-                        <Button
-                            color="primary"
-                            onClick={handleContentMessageOpen}
-                            fullWidth
-                            sx={{
-                                mt: 2,
-                                mb: 4
-                            }}
-                            to="#"
-                            variant="contained"
-                        >
-                            Content Messages
-                        </Button>}
-                    <ContentMessage
-                        onApply={handleContentMessageClose}
-                        onClose={handleContentMessageClose}
-                        open={isContentMessageOpen}
-                    />
-                    <Divider/>
-                    <Typography
-                        color="textPrimary"
-                        variant="subtitle2"
-                        sx={{
-                            color: 'text.primary',
-                            fontSize: '0.75rem',
-                            lineHeight: 2.5,
-                            fontWeight: 700,
-                            textTransform: 'uppercase',
-                            mt: 2
-                        }}
-                    >
-                        Need Help?
-                    </Typography>
-                    <Button
-                        color="primary"
-                        // component={RouterLink}
-                        fullWidth
-                        sx={{mt: 2}}
-                        to="#"
-                        variant="contained"
-                    >
-                        Documentation
-                    </Button>
-                </Box>
-            </Scrollbar>
+  const content = (
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100%'
+      }}
+    >
+      <Scrollbar options={{ suppressScrollX: true }}>
+        <Box sx={{
+          p: 2
+          }}>
+          {sections.map((section) => (
+            <NavSection
+              key={section.title}
+              pathname={location.pathname}
+              sx={{
+                '& + &': {
+                  mt: 3
+                }
+              }}
+              {...section}
+            />
+          ))}
         </Box>
-    );
-
+        <Divider />
+        <Box sx={{ p: 2 }}>
+          <Button
+            color="primary"
+            onClick={handleApplyModalOpen}
+            fullWidth
+            sx={{ mt: 2 }}
+            to="#"
+            variant="contained"
+          >
+            Interactions
+          </Button>
+          <Modal
+            onApply={handleApplyModalClose}
+            onClose={handleApplyModalClose}
+            open={isApplicationOpen}
+          />
+          <Button
+              color="primary"
+              onClick={handleApplyVotesModalOpen}
+              fullWidth
+              sx={{
+                mt: 2
+              }}
+              to="#"
+              variant="contained"
+          >
+            Current Votes
+          </Button>
+          <VotesModal
+              onApply={handleApplyVotesModalClose}
+              onClose={handleApplyVotesModalClose}
+              open={isVotesApplicationOpen}
+          />
+          <Button
+              color="primary"
+              onClick={handleContentMessageOpen}
+              fullWidth
+              sx={{
+                mt: 2,
+                mb: 4
+              }}
+              to="#"
+              variant="contained"
+          >
+            Content Messages
+          </Button>
+          <ContentMessage
+              onApply={handleContentMessageClose}
+              onClose={handleContentMessageClose}
+              open={isContentMessageOpen}
+          />
+          <Divider/>
+          <Typography
+              color="textPrimary"
+              variant="subtitle2"
+              sx={{
+                color: 'text.primary',
+                fontSize: '0.75rem',
+                lineHeight: 2.5,
+                fontWeight: 700,
+                textTransform: 'uppercase',
+                mt: 2
+              }}
+          >
+            Need Help?
+          </Typography>
+          <Button
+              color="primary"
+              // component={RouterLink}
+              fullWidth
+              sx={{ mt: 2 }}
+              to="#"
+              variant="contained"
+          >
+            Documentation
+          </Button>
+        </Box>
+      </Scrollbar>
+    </Box>
+  );
     if (lgUp) {
         return (
             <Drawer
@@ -248,6 +224,7 @@ const DashboardSidebar = (props) => {
             </Drawer>
         );
     }
+
 
     return (
         <>

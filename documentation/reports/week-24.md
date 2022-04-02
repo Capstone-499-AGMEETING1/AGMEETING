@@ -10,7 +10,7 @@
 - Added role-based messaging to socket.io.
 - Updated the appearence of receiving messages to be more consistent.
 
-## Ryan's Tasks
+### Ryan's Tasks
 
 - Researched ways to display file data from multer (Beyond scope of current project)
 - UI Fixes

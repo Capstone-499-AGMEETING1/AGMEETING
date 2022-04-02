@@ -10,7 +10,13 @@
 - Added role-based messaging to socket.io.
 - Updated the appearence of receiving messages to be more consistent.
 
+### Ryan's Tasks
+
+- Researched ways to display file data from multer (Beyond scope of current project)
+- UI Fixes
+
 ### Garry's Tasks
 
 - Updated the vault so only moderators can upload files
 - Created weekly scrum report for 2022-04-01
+

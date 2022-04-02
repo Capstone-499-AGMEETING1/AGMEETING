@@ -1,6 +1,5 @@
 import React, {useEffect} from "react";
 import routes from "./routes";
-
 import {createCustomTheme} from '../config/theme';
 import RTL from './RTL'
 import ErrorBoundary from "./Errorbound";
@@ -9,28 +8,31 @@ import {useRoutes} from "react-router";
 import {ThemeProvider} from "@mui/material/styles";
 import {CssBaseline} from "@mui/material";
 import SettingsDrawer from "./SettingsDrawer";
-import {toast, ToastContainer} from "material-react-toastify";
+import {ToastContainer} from "material-react-toastify";
 import 'material-react-toastify/dist/ReactToastify.css';
 import {io} from "socket.io-client";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {addMessage} from "./actions/message";
+import moment from "moment";
 
 
 export default function App() {
     const {user} = useSelector((state) => state.auth);
+    const {settings} = useSettings();
+    const dispatch = useDispatch();
+
     useEffect(() => {
         const socket = io();
         socket.on('message', (msg) => {
-            toast.success(msg);
+            dispatch(addMessage(msg, moment().format('MMMM Do YYYY, h:mm:ss a')));
         });
 
         if (user && user.meetingId) {
             socket.on(user.meetingId, (msg) => {
-                toast.success(msg);
+                dispatch(addMessage(msg, moment().format('MMMM Do YYYY, h:mm:ss a')));
             });
         }
     }, []);
-
-    const {settings} = useSettings();
 
     const theme = createCustomTheme({
         direction: settings.direction,
@@ -47,11 +49,8 @@ export default function App() {
                 <ToastContainer/>
                 <CssBaseline/>
                 <RTL direction={settings.direction}>
-                    {/* <Toaster position="top-center" /> */}
                     <SettingsDrawer/>
                     {content}
-                    {/* Declarative route */}
-                    {/* <Routes /> */}
                 </RTL>
             </ThemeProvider>
         </ErrorBoundary>

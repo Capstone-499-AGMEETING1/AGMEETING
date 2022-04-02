@@ -1,54 +1,31 @@
 import React from 'react'
-import { useRef, useState } from 'react';
-import { subDays, subHours } from 'date-fns';
-import { Avatar, Badge, Box, Button, IconButton, Link, List, ListItem, ListItemAvatar, ListItemText, Popover, Tooltip, Typography} from "@mui/material";
+import {useRef, useState} from 'react';
+import {subDays, subHours} from 'date-fns';
+import {
+    Avatar,
+    Badge,
+    Box,
+    Button,
+    IconButton,
+    Link,
+    List,
+    ListItem,
+    ListItemAvatar,
+    ListItemText,
+    Popover,
+    Tooltip,
+    Typography
+} from "@mui/material";
 import BellIcon from '../../icons/Bell';
 import ChatAltIcon from '../../icons/ChatAlt';
-import CreditCardIcon from '../../icons/CreditCard';
-import AddBoxIcon from '@mui/icons-material/AddBox';
-
-const now = new Date();
-
-const notifications = [
-    {
-        id: '5e8883f1b51cc1956a5a1ec0',
-        createdAt: subHours(now, 2).getTime(),
-        description: 'Meeting has started',
-        title: 'Administrator Alert',
-        type: 'order_placed'
-    },
-    {
-        id: '5e8883f7ed1486d665d8be1e',
-        createdAt: subDays(now, 1).getTime(),
-        description: 'Message from moderator',
-        title: 'New message received',
-        type: 'new_message'
-    },
-    {
-        id: '5e8883fca0e8612044248ecf',
-        createdAt: subDays(now, 3).getTime(),
-        description: 'File uploaded successfully',
-        title: 'File upload status',
-        type: 'item_uploaded'
-    },
-    {
-        id: '5e88840187f6b09b431bae68',
-        createdAt: subDays(now, 7).getTime(),
-        description: 'Thank you for your message',
-        title: 'Reply from moderator',
-        type: 'new_message'
-    }
-];
-
-const iconsMap = {
-    item_uploaded: AddBoxIcon,
-    new_message: ChatAltIcon,
-    order_placed: CreditCardIcon
-};
+import {useDispatch, useSelector} from "react-redux";
+import {clearMessages} from "../../actions/message";
 
 const NotificationsPopover = () => {
     const anchorRef = useRef(null);
     const [open, setOpen] = useState(false);
+    const {messages} = useSelector((state) => state.messages);
+    const dispatch = useDispatch();
 
     const handleOpen = () => {
         setOpen(true);
@@ -56,6 +33,10 @@ const NotificationsPopover = () => {
 
     const handleClose = () => {
         setOpen(false);
+    };
+
+    const readAllMessages = () => {
+        dispatch(clearMessages());
     };
 
     return (
@@ -68,9 +49,9 @@ const NotificationsPopover = () => {
                 >
                     <Badge
                         color="error"
-                        badgeContent={4}
+                        badgeContent={messages.length}
                     >
-                        <BellIcon fontSize="small" />
+                        <BellIcon fontSize="small"/>
                     </Badge>
                 </IconButton>
             </Tooltip>
@@ -83,10 +64,10 @@ const NotificationsPopover = () => {
                 onClose={handleClose}
                 open={open}
                 PaperProps={{
-                    sx: { width: 320 }
+                    sx: {width: 320}
                 }}
             >
-                <Box sx={{ p: 2 }}>
+                <Box sx={{p: 2}}>
                     <Typography
                         color="textPrimary"
                         variant="h6"
@@ -94,27 +75,25 @@ const NotificationsPopover = () => {
                         Notifications
                     </Typography>
                 </Box>
-                {notifications.length === 0
+                {messages.length === 0
                     ? (
-                        <Box sx={{ p: 2 }}>
+                        <Box sx={{p: 2}}>
                             <Typography
                                 color="textPrimary"
                                 variant="subtitle2"
                             >
-                                There are no notifications
+                                There are no notifications.
                             </Typography>
                         </Box>
                     )
                     : (
                         <>
                             <List disablePadding>
-                                {notifications.map((notification) => {
-                                    const Icon = iconsMap[notification.type];
-
+                                {messages.map((msg) => {
                                     return (
                                         <ListItem
                                             divider
-                                            key={notification.id}
+                                            key={msg.date}
                                         >
                                             <ListItemAvatar>
                                                 <Avatar
@@ -123,21 +102,21 @@ const NotificationsPopover = () => {
                                                         color: 'primary.contrastText'
                                                     }}
                                                 >
-                                                    <Icon fontSize="small" />
+                                                    <ChatAltIcon fontSize="small"/>
                                                 </Avatar>
                                             </ListItemAvatar>
                                             <ListItemText
                                                 primary={(
                                                     <Link
                                                         color="textPrimary"
-                                                        sx={{ cursor: 'pointer' }}
+                                                        sx={{cursor: 'pointer'}}
                                                         underline="none"
                                                         variant="subtitle2"
                                                     >
-                                                        {notification.title}
+                                                        {msg.message}
                                                     </Link>
                                                 )}
-                                                secondary={notification.description}
+                                                secondary={(msg.date)}
                                             />
                                         </ListItem>
                                     );
@@ -154,8 +133,9 @@ const NotificationsPopover = () => {
                                     color="primary"
                                     size="small"
                                     variant="text"
+                                    onClick={readAllMessages}
                                 >
-                                    Mark all as read
+                                    Mark All as Read
                                 </Button>
                             </Box>
                         </>

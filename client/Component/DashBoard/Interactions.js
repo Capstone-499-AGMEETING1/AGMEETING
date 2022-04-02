@@ -2,13 +2,16 @@ import React, {useState} from "react";
 import PropTypes from "prop-types";
 import toast from "react-hot-toast";
 import Grid from "@mui/material/Grid";
-import {Close} from '@material-ui/icons';
+import CloseIcon from '@mui/icons-material/Close';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import {
     Box,
     Button,
+    Card,
+    CardHeader,
     Dialog,
-    Typography,
-    Divider
+    Divider,
+    IconButton, Typography
 } from "@mui/material";
 
 const Modal = (props) => {
@@ -27,118 +30,126 @@ const Modal = (props) => {
     };
 
     return (
-        <Dialog maxWidth="sm" onClose={onClose} open={open} {...other}>
-            <Box sx={{p: 3}}>
+        <Dialog maxWidth="md" onClose={onClose} open={open} {...other}>
+            <Box sx={{p: 3, backgroundColor: 'background.default'}} >
+                <Card>
+                    <CardHeader
+                        action={
+                            <Grid container>
+                                <Grid item>
+                                    <IconButton>
+                                        <HelpOutlineIcon/>
+                                    </IconButton>
+                                </Grid>
+                                <Grid item>
+                                    <IconButton onClick={onClose}>
+                                        <CloseIcon/>
+                                    </IconButton>
+                                </Grid>
+                            </Grid>
+                        }
+                        title={
+                            <Typography variant="h5">
+                                Interactions
+                            </Typography>
+                        }
+                    />
+                    <Divider/>
+                    <Box sx={{flexGrow: 1}} sx={{ p: 2, pr: 6 }}>
+                        <Grid container spacing={2}>
+                            <Grid item xs={6}>
+                                <Button variant="contained" fullWidth sx={{ mx: 2 }}>
+                                    Motion Item
+                                </Button>
+                            </Grid>
+                            <Grid item xs={6}>
+                                <Button variant="contained" fullWidth sx={{ mx: 2 }}>
+                                    Second Item
+                                </Button>
+                            </Grid>
 
-                <Grid container justifyContent="flex-end">
-                    <Button startIcon={<Close/>} onClick={onClose}/>
-                </Grid>
+                            <Grid item xs={12}>
+                                <Divider variant='fullWidth'/>
+                            </Grid>
 
-                <Typography
-                    align="center"
-                    color="textPrimary"
-                    gutterBottom
-                    variant="h4"
-                >
-                    Interaction
-                    <Grid item xs={12}>
-                        <Divider variant='fullWidth'/>
-                    </Grid>
-                </Typography>
-                <Box sx={{flexGrow: 1}}>
-                    <Grid container spacing={2}>
-                        <Grid item xs={6}>
-                            <Button variant="contained" fullWidth>
-                                Motion Item
-                            </Button>
-                        </Grid>
-                        <Grid item xs={6}>
-                            <Button variant="contained" fullWidth>
-                                Second Item
-                            </Button>
-                        </Grid>
+                            <Grid item xs={6}>
+                                <Button variant="contained" fullWidth color="success" sx={{ mx: 2 }}>
+                                    Comment FOR
+                                </Button>
+                            </Grid>
+                            <Grid item xs={6}>
+                                <Button variant="contained" fullWidth color="error" sx={{ mx: 2 }}>
+                                    Comment AGAINST
+                                </Button>
+                            </Grid>
+                            <Grid item xs={12}>
+                                <Button variant="contained" fullWidth color="warning" sx={{ mx: 2 }}>
+                                    Withdraw Comment
+                                </Button>
+                            </Grid>
 
-                        <Grid item xs={12}>
-                            <Divider variant='fullWidth'/>
-                        </Grid>
+                            <Grid item xs={12}>
+                                <Divider variant='fullWidth'/>
+                            </Grid>
 
-                        <Grid item xs={6}>
-                            <Button variant="contained" fullWidth color="success">
-                                Comment FOR
-                            </Button>
-                        </Grid>
-                        <Grid item xs={6}>
-                            <Button variant="contained" fullWidth color="error">
-                                Comment AGAINST
-                            </Button>
-                        </Grid>
-                        <Grid item xs={12}>
-                            <Button variant="contained" fullWidth color="warning">
-                                Withdraw Comment
-                            </Button>
-                        </Grid>
+                            <Grid item xs={4}>
+                                <Button variant="contained" fullWidth color="info" sx={{ mx: 2, px:-5 }}>
+                                    Point of Information
+                                </Button>
+                            </Grid>
+                            <Grid item xs={4}>
+                                <Button variant="contained" fullWidth color="info" sx={{ mx: 2 }}>
+                                    Point of Privilege
+                                </Button>
+                            </Grid>
+                            <Grid item xs={4}>
+                                <Button variant="contained" fullWidth color="info" sx={{ mx: 2 }}>
+                                    Point of Order
+                                </Button>
+                            </Grid>
+                            <Grid item xs={4}>
+                                <Button variant="contained" fullWidth color="info" sx={{ mx: 2 }}>
+                                    Recess
+                                </Button>
+                            </Grid>
+                            <Grid item xs={4}>
+                                <Button variant="contained" fullWidth color="info" sx={{ mx: 2 }}>
+                                    Table
+                                </Button>
+                            </Grid>
+                            <Grid item xs={4}>
+                                <Button variant="contained" fullWidth color="info" sx={{ mx: 2 }}>
+                                    Amend
+                                </Button>
+                            </Grid>
 
-                        <Grid item xs={12}>
-                            <Divider variant='fullWidth'/>
-                        </Grid>
+                            <Grid item xs={12}>
+                                <Divider variant='fullWidth'/>
+                            </Grid>
 
-                        <Grid item xs={4}>
-                            <Button variant="contained" fullWidth color="info">
-                                Point of Information
-                            </Button>
+                            <Grid item xs={12}>
+                                <Button variant="contained" fullWidth sx={{ mx: 2 }}>
+                                    Ready to Vote
+                                </Button>
+                            </Grid>
+                            <Grid item xs={4}>
+                                <Button variant="contained" fullWidth color="success" sx={{ mx: 2 }}>
+                                    Vote YES
+                                </Button>
+                            </Grid>
+                            <Grid item xs={4}>
+                                <Button variant="contained" fullWidth color="error" sx={{ mx: 2 }}>
+                                    Vote NO
+                                </Button>
+                            </Grid>
+                            <Grid item xs={4}>
+                                <Button variant="contained" fullWidth color="warning" sx={{ mx: 2 }}>
+                                    Abstain
+                                </Button>
+                            </Grid>
                         </Grid>
-                        <Grid item xs={4}>
-                            <Button variant="contained" fullWidth color="info">
-                                Point of Privilege
-                            </Button>
-                        </Grid>
-                        <Grid item xs={4}>
-                            <Button variant="contained" fullWidth color="info">
-                                Point of Order
-                            </Button>
-                        </Grid>
-                        <Grid item xs={4}>
-                            <Button variant="contained" fullWidth color="info">
-                                Recess
-                            </Button>
-                        </Grid>
-                        <Grid item xs={4}>
-                            <Button variant="contained" fullWidth color="info">
-                                Table
-                            </Button>
-                        </Grid>
-                        <Grid item xs={4}>
-                            <Button variant="contained" fullWidth color="info">
-                                Amend
-                            </Button>
-                        </Grid>
-
-                        <Grid item xs={12}>
-                            <Divider variant='fullWidth'/>
-                        </Grid>
-
-                        <Grid item xs={12}>
-                            <Button variant="contained" fullWidth>
-                                Ready to Vote
-                            </Button>
-                        </Grid>
-                        <Grid item xs={4}>
-                            <Button variant="contained" fullWidth color="success">
-                                Vote YES
-                            </Button>
-                        </Grid>
-                        <Grid item xs={4}>
-                            <Button variant="contained" fullWidth color="error">
-                                Vote NO
-                            </Button>
-                        </Grid>
-                        <Grid item xs={4}>
-                            <Button variant="contained" fullWidth color="warning">
-                                Abstain
-                            </Button>
-                        </Grid>
-                    </Grid>
-                </Box>
+                    </Box>
+                </Card>
             </Box>
         </Dialog>
     );

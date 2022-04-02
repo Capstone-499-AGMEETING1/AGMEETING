@@ -76,7 +76,11 @@ const VotesModal = (props) => {
                                 <DotsHorizontalIcon fontSize="small" />
                             </IconButton>
                         )}
-                        title="Votes"
+                        title={
+                            <Typography variant="h5">
+                                Current Votes
+                            </Typography>
+                        }
                     />
                     <Divider />
                     <Box sx={{

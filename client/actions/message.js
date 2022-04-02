@@ -1,10 +1,20 @@
-import {SET_MESSAGE, CLEAR_MESSAGE} from './types';
+import {ADD_MESSAGE, CLEAR_MESSAGES} from './types';
+import MessageService from "../services/message.service";
 
-export const setMessage = (message) => ({
-    type: SET_MESSAGE,
-    payload: message
-});
+export const addMessage = (msg, date) => (dispatch) => {
+    MessageService.addMessage(msg, date);
+    dispatch({
+        type: ADD_MESSAGE,
+        payload: {
+            message: msg,
+            date: date
+        }
+    });
+};
 
-export const clearMessage = () => ({
-    type: CLEAR_MESSAGE
-});
+export const clearMessages = () => (dispatch) => {
+    MessageService.clearMessages();
+    dispatch({
+        type: CLEAR_MESSAGES
+    });
+};

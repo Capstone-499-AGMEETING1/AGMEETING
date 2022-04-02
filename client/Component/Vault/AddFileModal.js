@@ -59,7 +59,8 @@ const AddFileModal = (props) => {
                 >
                     Add a File to the Vault
                 </Typography>
-                <Grid container spacing={2}>
+                <Divider/>
+                <Grid container spacing={2} sx={{my:2}}>
                     <Grid item xs={12}>
                         <input
                             type="file"

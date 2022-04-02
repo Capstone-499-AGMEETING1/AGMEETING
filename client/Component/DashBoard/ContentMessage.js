@@ -148,6 +148,7 @@ const ContentMessage = (props) => {
                                         SelectProps={{native: true}}
                                         value={menuOption}
                                         variant="outlined"
+                                        size="small"
                                     >
                                         {menuOptions.map((option) => (
                                             <option

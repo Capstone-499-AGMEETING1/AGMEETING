@@ -8,13 +8,11 @@ import {
     Divider,
     Grid,
     Typography,
-    IconButton,
     CardHeader
 } from '@mui/material'
 import { alpha, useTheme } from '@mui/material'
 import ChevronDownIcon from '../../../icons/ChevronDown';
 import ChevronUpIcon from '../../../icons/ChevronUp';
-import DotsHorizontalIcon from '../../../icons/DotsHorizontal';
 import ApprovalTable from './ApprovalTable';
 
 const ReadyToVote = () => {
@@ -52,12 +50,11 @@ const ReadyToVote = () => {
     return (
         <>
             <CardHeader
-                action={(
-                    <IconButton>
-                        <DotsHorizontalIcon fontSize="small"/>
-                    </IconButton>
+                title={(
+                    <Typography variant="h5" sx={{ pl:2 }}>
+                        Ready To Vote Statistics
+                    </Typography>
                 )}
-                title="Ready To Vote Statistics"
             />
             <Box
                 sx={{
@@ -154,7 +151,7 @@ const ReadyToVote = () => {
                                             color="textPrimary"
                                             variant="h4"
                                         >
-                                            %100
+                                            %40
                                         </Typography>
                                         <Typography
                                             color="textPrimary"

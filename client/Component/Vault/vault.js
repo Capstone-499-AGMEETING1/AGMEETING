@@ -135,8 +135,7 @@ const Vault = () => {
         <Box
             sx={{
                 backgroundColor: 'background.default',
-                p: 3,
-                mt: 2
+                p: 3
             }}
         >
             <Card>
@@ -157,6 +156,21 @@ const Vault = () => {
 
                                {showModal()}
 
+                                <Typography variant="h5">Vault</Typography>
+                                </Grid>
+                                <Grid>
+                                <Button
+                                    color="primary"
+                                    onClick={handleApplyModalOpen}
+                                    startIcon={<UploadFile fontSize="small"/>}
+                                    sx={{
+                                        ml: 2
+                                    }}
+                                    variant="contained"
+                                    size="medium"
+                                >
+                                    Add File
+                                </Button>
                             </Grid>
                         </Grid>
                     )}

@@ -1,0 +1,45 @@
+# Technical Specifications
+
+- Node.js:
+  - Designed to build scalable network applications.
+  - Can be used with either JavaScript or TypeScript.
+  - It was designed and influenced by systems like Ruby’s “Event Machine”, and Python’s “Twisted”.
+- React:
+  - A JavaScript/TypeScript library that is used to build user interfaces.
+  - Declarative:
+    - Simple views for each state in your application, React will update and render the components as the data changes.
+  - Component-Based:
+    - Encapsulated components manage their own state.
+    - Can keep rich data out of the DOM.
+- Material UI:
+  - We are using Material UI for styling the front-end of our project.
+  - It is a UI library that easily interacts with React.
+- SQLite:
+  - A C-Language library that implements a small, fast, self-contained, high-reliability, full-featured, SQL database engine.
+  - It is the most used database engine in the world.
+  - It is stable and cross-platform.
+- Sequelize:
+  - A modern Node.js ORM that can be used with SQLite.
+  - Features solid transaction support, relations, eager and lazy loading, read replication, and more.
+- Redux:
+  - It is a predictable state container for JavaScript apps.
+  - It centralizes the application’s state.
+  - Easy to test.
+- Axios:
+  - A promise-based HTTP client for NodeJS.
+- Webpack:
+  - An open-source JavaScript module bundler.
+  - It takes modules with dependencies and generates static assets representing those modules.
+- Passport.js:
+  - An authentication middleware for NodeJS.
+  - Supports SSO.
+  - Supports persistent sessions.
+  - Lightweight.
+  - It does not mount routes in the application.
+- Socket.IO:
+  - Low-latency communication for every platform.
+  - The connection is normally established with WebSocket.
+  - Maintains reliability and functionality.
+  - Scales to multiple servers and send events to all connected clients with ease.
+- Multer:
+  - Multer is a node.js middleware for handling multipart/form-data, which is primarily used for uploading files.

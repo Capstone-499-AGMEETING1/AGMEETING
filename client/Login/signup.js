@@ -17,7 +17,6 @@ import {register} from "../actions/auth";
 
 
 export default function SignUp() {
-    const {message} = useSelector(state => state.message);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [isAdmin, setIsAdmin] = useState(false);

@@ -112,22 +112,22 @@ const Vault = () => {
     const showModal = () => {
         if (user && user.isModerator) {
             return (
-            <Button
-            color="primary"
-            onClick={handleApplyModalOpen}
-            startIcon={<UploadFile fontSize="small" />}
-            sx={{
-                ml: 2
-            }}
-            variant="contained"
-            size="small"
-        >
-            Add File
-        </Button>
+                <Button
+                    color="primary"
+                    onClick={handleApplyModalOpen}
+                    startIcon={<UploadFile fontSize="small" />}
+                    sx={{
+                        ml: 2
+                    }}
+                    variant="contained"
+                    size="small"
+                >
+                    Add File
+                </Button>
             )
         }
         else return (
-         null
+            null
         );
     }
 
@@ -154,23 +154,8 @@ const Vault = () => {
                             </Grid>
                             <Grid>
 
-                               {showModal()}
-
-                                <Typography variant="h5">Vault</Typography>
-                                </Grid>
-                                <Grid>
-                                <Button
-                                    color="primary"
-                                    onClick={handleApplyModalOpen}
-                                    startIcon={<UploadFile fontSize="small"/>}
-                                    sx={{
-                                        ml: 2
-                                    }}
-                                    variant="contained"
-                                    size="medium"
-                                >
-                                    Add File
-                                </Button>
+                                {showModal()}
+                                
                             </Grid>
                         </Grid>
                     )}

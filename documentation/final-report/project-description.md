@@ -1,4 +1,4 @@
-### Project Description
+# Project Description
 
 AGMEETING is a software application designed to supplement and streamline company meetings by providing a framework for interaction 
 structured on the principles of Robert’s Rules of Order. Participants in the meeting will be guided by the Moderator through an interactive 

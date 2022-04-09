@@ -7,8 +7,7 @@
     - Mocha was used to test out NodeJS components and Socket.IO
     - Postman/Thunder Client was used to carry API tests
 
-- Unit tests were written to ensure each component was working as expected and updated accordingly
-  as we progressed through the project
+- Unit tests were unable to be written due to time constraints with the project.
 - Integration testing was conducted to ensure that React components interact with the service 
   side of the project, in order to ensure functionality between frontend and backend
 - The system will be presented to the client and tested during the process to showcase that everything works as expected

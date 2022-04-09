@@ -15,3 +15,8 @@
 - Worked on DFD section of the report
 - Workedon on link section of the report
 - Minor bug fix in vault page
+
+### Chester's Tasks
+- Project handover section of the report.
+- Software implementation status section of the report.
+- Fixed issues with file extensions using multer upload.

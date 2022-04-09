@@ -6,6 +6,11 @@
 - Requirement section of the report.
 - Minor bug fix in registration page.
 
+### Ryan's Tasks 
+
+- Provided software description for the report
+- Provided list of user groups for the report
+
 ### Garry's Tasks
 - Worked on DFD section of the report
 - Workedon on link section of the report

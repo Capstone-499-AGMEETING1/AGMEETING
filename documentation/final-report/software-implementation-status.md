@@ -3,12 +3,12 @@
 ### Testing
 
 - Our code was tested to ensure each component was working as expected
-    - Jest was used to test out React components
-    - Mocha was used to test out NodeJS components and Socket.IO
     - Postman/Thunder Client was used to carry API tests
 
-- Unit tests were unable to be written due to time constraints with the project.
-- Integration testing was conducted to ensure that React components interact with the service 
+- Unit tests were unable to be written in order to meet project deadlines
+- Components of the project such as React, NodeJS and Socket.IO were tested manually by team members instead
+  as a result of the time constraints with the project
+- Integration testing was conducted to ensure that React components interact with the server 
   side of the project, in order to ensure functionality between frontend and backend
 - The system will be presented to the client and tested during the process to showcase that everything works as expected
 
